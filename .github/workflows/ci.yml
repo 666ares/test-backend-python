@@ -16,18 +16,32 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        python: ['3.10']
+    defaults:
+      run:
+        shell: bash
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python }}
-      - name: Install Poetry, tox and dev dependencies
+          python-version: "3.10"
+      - uses: snok/install-poetry@v1
+        with:
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+      - name: Load cached venv
+        id: cached-pip-wheels
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache
+          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+      - name: Install dependencies
         run: |
-          curl -sSL https://install.python-poetry.org | python - -y
           pip install tox
-          poetry install --only dev
+          poetry install --no-interaction --no-root
+      - name: Install library
+        run: poetry install --no-interaction
       - name: Run tests
         run: |
+          source $VENV
           poetry run tox
