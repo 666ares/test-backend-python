@@ -2,9 +2,15 @@ name: Linters
 
 on:
   pull_request:
+    paths:
+      - cobra/**
+      - tests/**
   push:
     branches:
       - main
+    paths:
+      - cobra/**
+      - tests/**
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
