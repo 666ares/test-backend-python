@@ -15,6 +15,7 @@
     - seguridad?
     - control de dependencias?
     - docs?
+    - ajustar qué directorios/ficheros provocan que se ejecuten los worklflows y cuáles no
 
 - https://stackoverflow.com/questions/59810276/poetry-doesnt-use-the-correct-version-of-python
 - https://stackoverflow.com/questions/72374296/how-do-i-properly-change-package-name-built-with-poetry
