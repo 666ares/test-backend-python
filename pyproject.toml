@@ -16,7 +16,7 @@ pytest = "==8.0.0"
 optional = true
 
 [tool.poetry.group.github-actions.dependencies]
-pytest-github-actions-annotate-failures = "^0.1.7"
+pytest-github-actions-annotate-failures = "==0.2.0"
 
 [build-system]
 requires = ["poetry-core"]
