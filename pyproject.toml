@@ -9,9 +9,13 @@ readme = "README.md"
 python = "3.10.*"
 pyvmomi = "==8.0.2.0.1"
 
-
 [tool.poetry.group.dev.dependencies]
 pytest = "==8.0.0"
+
+[tool.poetry.group.github-actions]
+optional = true
+[tool.poetry.group.github-actions.dependencies]
+pytest-github-actions-annotate-failures = "^0.1.7"
 
 [build-system]
 requires = ["poetry-core"]
