@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "cobra"
+version = "0.1.0"
+description = ""
+authors = ["CyberDataLab - Universidad de Murcia <cyberdatalab@um.es>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.10.*"
+pyvmomi = "==8.0.2.0.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "==8.0.0"
+
+[tool.poetry.group.github-actions]
+optional = true
+
+[tool.poetry.group.github-actions.dependencies]
+pytest-github-actions-annotate-failures = "==0.2.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
