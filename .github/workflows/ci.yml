@@ -35,13 +35,12 @@ jobs:
         with:
           path: ~/.cache
           key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+      - name: Check lock file
+        run: poetry check --lock
       - name: Install dependencies
         run: |
-          pip install tox
-          poetry install --no-interaction --no-root
-      - name: Install library
-        run: poetry install --no-interaction
+          poetry install
       - name: Run tests
         run: |
           source $VENV
-          poetry run tox
+          poetry run pytest
