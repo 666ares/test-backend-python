@@ -1,7 +1,7 @@
 name: Tests
 
 on:
-  pull_request:
+  pull_request: {}
   push:
     branches:
       - main
@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   tests:
-    name: Unit tests (${{ matrix.python-version }}, ${{ matrix.os }})
+    name: Unit tests (Python ${{ matrix.python-version }}, ${{ matrix.os }})
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
